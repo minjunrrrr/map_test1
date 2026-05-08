@@ -14,6 +14,7 @@ st.markdown("# 큰 제목 ")
 st.markdown("## 작은 제목 ")
 st.markdown("**굵은 글씨**와 *이탤릭체* ")
 
+# 2. 데이터 읽어보기(데이터 수집 csv)
 st.header("헤더입니다")
 st.subheader("서브헤더입니다")
 st.caption("캡션입니다")
@@ -24,4 +25,17 @@ st.text("Hello")
 df = pd.read_csv('인천광역시 남동구_고등학교_20240325.csv', encoding='cp949')
 df_latlon = df[['위도','경도']]
 df_latlon = df_latlon.rename(columns={'위도':'lat','경도':'lon'})
-st.map(df_latlon)
+#st.map(df_latlon)
+
+
+# 3. 지도 생성 및 마커 표시(지도 시각화 단계)
+m = folium.Map(
+    location=[37.40583317,126.7214872],
+    zoom_start=12
+)
+folium.Marker(
+  location= [37.40583317,126.7214872],
+  popup= "남동고등학교",
+  tooltip="클릭해보세요",
+  icon = folium.Icon(color='lightblue', icon='info-sign')
+).add_to(m)
