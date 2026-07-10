@@ -23,9 +23,9 @@ st.code("a=3")
 st.text("안녕~~ 남동고등학교 여러분,, 첫 페이지를 만드셨습니다.")
 
 
-df = pd.read_csv('등산경로'.csv, encoding= 'utf-8')
-df_lation = df[['위도','경도']]
-df_lation = df_lation.rename(columns={'위도':'lat','경도':'lon'})
+df = pd.read_csv('등산경로.csv', encoding= 'utf-8')
+df_latlon = df[['위도','경도']]
+df_latlon = df_latlon.rename(columns={'위도':'lat','경도':'lon'})
 #st.map(df_lation)
 
 # 3. 지도 생성 및 마커 표시(지도 시각화 단계)
