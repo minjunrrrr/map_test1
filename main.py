@@ -52,7 +52,6 @@ for i in range(len(df)):
         
 # 4. 화면 출력
 st_folium(m, width=700, height=500)
-'''
 
 # 4. 화면 출력
 col1 , col1 = st.colums([3.1])
