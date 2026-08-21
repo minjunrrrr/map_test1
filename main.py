@@ -158,10 +158,3 @@ with col2:
                 st.image(img_path, caption=row['위치명'], use_container_width=True)
             else:
                 st.caption("📷 *(해당 지점 이미지 파일 준비 중)*")
-
-
-
-    
-    st.info("길이 미끄럽습니다. 주의하세요.")
-    st.metric(label="소요시간", value="10분") # 소요시간, 정보 코스별로 넣기
-    st.write("주의사항 : 등산화를 착용하세요.")
