@@ -11,40 +11,39 @@ st.title("🏞️🏞️ 2026 학교 등산 행사 안내 지도 🏞️🏞️"
 st.markdown("우리 동아리가 직접 발로 뛰며 만든 코스 가이드 입니다")
 st.markdown("왼쪽 메뉴에서 코스를 선택하고 행사에 참여해 보세요.")
 
-df = pd.read_csv('등산경로 - 시트1.csv', encoding= 'utf-8')
+# 2. 데이터 불러오기 및 가공
+df = pd.read_csv('등산경로 - 시트1.csv', encoding='utf-8')
 df['이미지'] = 'images/' + df['코스'] + df['위치명'] + '.jpg'
 
 df_lation = df[['위도','경도']]
 df_lation = df_lation.rename(columns={'위도':'lat','경도':'lon'})
-st.map(df_lation)
+st.map(df_lation) # Streamlit 기본 지도 (참고용)
 
-# 3. 지도 생성 및 마커 표시(지도 시각화 단계)
+# 3. 지도 생성 및 마커 표시 (지도 시각화 단계)
 m = folium.Map(
-    location=[37.40583317,126.7214872],
+    location=[37.40583317, 126.7214872],
     zoom_start=12
 )
 
+# 학교 위치 마커
 folium.Marker(
-  location= [37.404160, 126.719249],
-  popup= "ㅁ ㅁ ㅁ",
-  tooltip="남동고등학교",
-  icon = folium.Icon(color='lightblue', icon='info-sign')
+    location=[37.404160, 126.719249],
+    popup="남동고등학교",
+    tooltip="남동고등학교",
+    icon=folium.Icon(color='lightblue', icon='info-sign')
 ).add_to(m)
 
-
+# 데이터프레임을 이용한 코스 마커
 for i in range(len(df)):
     folium.Marker(
-        location = [df.iloc[i]['위도'], df.iloc[i]['경도']],
-        popup=f'div style="width:200px"> <strong>{df.iloc[i]['위치명']}</strong></div>',
+        location=[df.iloc[i]['위도'], df.iloc[i]['경도']],
+        popup=f'<div style="width:200px"> <strong>{df.iloc[i]["위치명"]}</strong></div>',
         tooltip="클릭해보세요",
-        icon = folium.Icon(color='green', icon= 'info-sign')
-        ).add_to(m)
+        icon=folium.Icon(color='green', icon='info-sign')
+    ).add_to(m)
         
-# 4. 화면 출력
-st_folium(m, width=700, height=500)
-
-# 4. 화면 출력
-col1 , col2 = st.columns([3,1])
+# 4. 화면 출력 (컬럼 나누기)
+col1, col2 = st.columns([3, 1])
 
 with col1:
     st_folium(m, width=700, height=500)
@@ -53,4 +52,4 @@ with col2:
     st.subheader("정보") # 코스정보
     st.info("길이 미끄럽습니다. 주의하세요.")
     st.metric(label="소요시간", value="10분") # 소요시간, 정보 코스별로 넣기
-    st.write("주의사항 : 등산화를 착용하세요. ")
+    st.write("주의사항 : 등산화를 착용하세요.")
