@@ -127,32 +127,6 @@ for course_name, group in df.groupby('코스'):
             tooltip=f"{row['위치명']} (클릭 시 상세/사진 보기)",
             icon=folium.Icon(color=marker_color, icon='info-sign')
         ).add_to(m)
-        #사진 방향 정보 수정
-
-from PIL import Image, ImageOps
-
-for idx, row in filtered_df.iterrows():
-            st.write(f"**{row['위치명']}**")
-            img_path = row['이미지']
-            if os.path.exists(img_path):
-                try:
-                    img = Image.open(img_path)
-            
-                    # EXIF 회전 정보를 실제 이미지 방향에 적용
-                    img = ImageOps.exif_transpose(img)
-            
-                    st.image(
-                        img,
-                        caption=row['위치명'],
-                        use_container_width=True
-                    )
-            
-                except Exception:
-                    st.caption("*(해당 지점 이미지 파일을 불러올 수 없습니다.)*")
-            else:
-                st.caption("*(해당 지점 이미지 파일 준비 중)*")
-
-
         
 # 4. 화면 출력
 col1, col2 = st.columns([3, 1])
