@@ -17,7 +17,46 @@ df['이미지'] = 'images/' + df['코스'] + df['위치명'] + '.jpg'
 
 df_lation = df[['위도','경도']]
 df_lation = df_lation.rename(columns={'위도':'lat','경도':'lon'})
-st.map(df_lation) # Streamlit 기본 지도 (참고용)
+st.map(df_lation) 
+
+course_info = {
+    "A코스": {
+        "color": "blue",        "time": "4~5분",
+
+        "desc": "학교 출발",
+        "notice": "경사가 완만하여 초보자에게 추천합니다.",
+        "caution": "편안한 운동화를 착용하세요."
+    },
+    "B코스": {
+        "color": "green",
+        "time": "8~9분",
+        "desc": "가온어린이공원 경유",
+        "notice": "탁 트인 조망과 아름다운 자연 경관을 즐길 수 있습니다.",
+        "caution": "낙엽 및 미끄럼 주의, 등산화 권장."
+    },
+    "C코스": {
+        "color": "orange",
+        "time": "10~11분",
+        "desc": "서해랑길 94코스 출발",
+        "notice": "접근성이 뛰어난 완주 코스입니다.",
+        "caution": "수분 보충을 위해 물을 챙기세요."
+    },
+    "D코스": {
+        "color": "red",
+        "time": "13~14분",
+        "desc": "세븐일레븐 코스",
+        "notice": "편의점이 있어 간식 및 음료 구매가 편리합니다.",
+        "caution": "쓰레기는 반드시 되가지고 내려오세요."
+    },
+    "E코스": {
+        "color": "purple",
+        "time": "12~13분",
+        "desc": "논현주공1단지 코스",
+        "notice": "입구를 잘 찾아가야하는 코스입니다.",
+        "caution": "벌레에 물리지 않도록 벌레기피제 사용을 권장합니다."
+    }
+}
+
 
 # 3. 지도 생성 및 마커 표시 (지도 시각화 단계)
 m = folium.Map(
