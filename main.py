@@ -12,7 +12,7 @@ st.markdown("우리 동아리가 직접 발로 뛰며 만든 코스 가이드 �
 st.markdown("왼쪽 메뉴에서 코스를 선택하고 행사에 참여해 보세요.")
 
 df = pd.read_csv('등산경로 - 시트1.csv', encoding= 'utf-8')
-df['이미지'] = 'images/' df['코스'] + df['위치명'] + '.jpg'
+df['이미지'] = 'images/' + df['코스'] + df['위치명'] + '.jpg'
 
 df_lation = df[['위도','경도']]
 df_lation = df_lation.rename(columns={'위도':'lat','경도':'lon'})
