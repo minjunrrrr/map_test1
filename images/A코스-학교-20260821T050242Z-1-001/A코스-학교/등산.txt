@@ -1,0 +1,36 @@
+https://maps.app.goo.gl/eyTJbFWBdt6uvxJP9?g_st=ac
+37.406063,126.720797
+37°24'21.8"N 126°43'14.9"E
+2443
+입구
+
+1:3.7
+갈림길
+https://maps.app.goo.gl/ab62dKLNUwD2eMDC9?g_st=ac
+37.406017,126.720135
+37°24'21.7"N 126°43'12.5"E
+113
+
+갈림길2
+1:47.4
+196
+https://maps.app.goo.gl/GqrMfVELuhPUCDcQ7?g_st=ac
+37.406419,126.719908
+37°24'23.1"N 126°43'11.7"E
+
+갈림길3
+2:26
+242
+https://maps.app.goo.gl/pzPDFrFer2KjNXfx7
+37.406630,126.719870
+37°24'23.9"N 126°43'11.5"E
+
+정상
+4:21
+444
+https://maps.app.goo.gl/o281u8xpPkMLXK6QA?g_st=ac
+37.407576,126.719651
+37°24'27.3"N 126°43'10.7"E
+
+내려오는시간
+3:45
