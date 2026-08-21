@@ -44,7 +44,7 @@ for i in range(len(df)):
 st_folium(m, width=700, height=500)
 
 # 4. 화면 출력
-col1 , col1 = st.columns([3.1])
+col1 , col2 = st.columns([3,1])
 
 with col1:
     st_folium(m, width=700, height=500)
