@@ -10,23 +10,13 @@ st.set_page_config(page_title="남동고 등산 메이트", layout="wide")
 st.title("🏞️🏞️ 2026 학교 등산 행사 안내 지도 🏞️🏞️")
 st.markdown("우리 동아리가 직접 발로 뛰며 만든 코스 가이드 입니다")
 st.markdown("왼쪽 메뉴에서 코스를 선택하고 행사에 참여해 보세요.")
-st.markdown("# 큰 제목 ")
-st.markdown("## 작은 제목 ")
-st.markdown("**굵은 글씨**와 *이탤릭체* ")
-
-# 2. 데이터 읽어보기(데이터 수집 csv)
-st.header("헤더입니다")
-st.subheader("서브헤더입니다")
-st.caption("캡션입니다")
-st.code("a=3")
-
-st.text("안녕~~ 남동고등학교 여러분,, 첫 페이지를 만드셨습니다.")
-
 
 df = pd.read_csv('등산경로 - 시트1.csv', encoding= 'utf-8')
+df['이미지'] = 'images/' df['코스'] + df['위치명'] + '.jpg'
+
 df_lation = df[['위도','경도']]
 df_lation = df_lation.rename(columns={'위도':'lat','경도':'lon'})
-#st.map(df_lation)
+st.map(df_lation)
 
 # 3. 지도 생성 및 마커 표시(지도 시각화 단계)
 m = folium.Map(
@@ -51,7 +41,7 @@ for i in range(len(df)):
         ).add_to(m)
         
 # 4. 화면 출력
-#st_folium(m, width=700, height=500)
+st_folium(m, width=700, height=500)
 
 # 4. 화면 출력
 col1 , col1 = st.colums([3.1])
