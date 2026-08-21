@@ -87,13 +87,13 @@ folium.Marker(
 ).add_to(m)
 
 
-for i in range(len(df)):
-    folium.Marker(
-        location=[df.iloc[i]['위도'], df.iloc[i]['경도']],
-        popup=f'<div style="width:200px"> <strong>{df.iloc[i]["위치명"]}</strong></div>',
-        tooltip="클릭해보세요",
-        icon=folium.Icon(color='green', icon='info-sign')
-    ).add_to(m)
+# for i in range(len(df)):
+    # folium.Marker(
+        # location=[df.iloc[i]['위도'], df.iloc[i]['경도']],
+        #popup=f'<div style="width:200px"> <strong>{df.iloc[i]["위치명"]}</strong></div>',
+        #tooltip="클릭해보세요",
+        #icon=folium.Icon(color='green', icon='info-sign')
+   # ).add_to(m)
 
 # 4-1. 코스별 마커 및 경로 선(PolyLine) 시각화
 for course_name, group in df.groupby('코스'):
