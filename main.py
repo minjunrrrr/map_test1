@@ -21,8 +21,8 @@ st.map(df_lation)
 
 course_info = {
     "A코스": {
-        "color": "blue",        "time": "4~5분",
-
+        "color": "blue",        
+        "time": "4~5분",
         "desc": "학교 출발",
         "notice": "경사가 완만하여 초보자에게 추천합니다.",
         "caution": "편안한 운동화를 착용하세요."
