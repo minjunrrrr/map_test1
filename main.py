@@ -96,7 +96,7 @@ for course_name, group in df.groupby('코스'):
     
     # 코스 식별 키 추출 
     c_key = course_name 
-    c_data = course_info.get(c_key, {"color": "gray", "time": "-", "notice": "", "caution": "안전에 유의하세요."})
+    c_data = course_info.get(c_key, {"color": "blue", "time": "-", "notice": "", "caution": "안전에 유의하세요."})
     marker_color = c_data["color"]
     
     # Points 선으로 잇기 (등산 경로 표시)
@@ -144,7 +144,25 @@ with col2:
     if selected_course != "전체 코스 보기":
         c_key = selected_course + '코스'
         info = course_info.get(c_key, {})
-        st.markdown(f"### **{selected_course}** 코스")
+        st.markdown(f"### 🚩**{selected_course}** 코스")
+        
+        st.info(f"🔔 {info.get('notice', '즐거운 등산 되세요!')}")
+        st.metric(label="⏱️ 예상 소요시간", value=info.get('time', '-'))
+        st.warning(f"💊 **주의사항**: {info.get('caution', '등산화를 착용하세요.')}")
+        
+        st.markdown("---")
+        st.subheader("📸 지점별 포인트 사진")
+        
+        # 선택한 코스의 지점별 사진 목록 출력
+        for idx, row in filtered_df.iterrows():
+            st.write(f"📍 **{row['위치명']}**")
+            img_path = row['이미지']
+            if os.path.exists(img_path):
+                st.image(img_path, caption=row['위치명'], use_container_width=True)
+            else:
+                st.caption("📷 *(해당 지점 이미지 파일 준비 중)*")
+
+
 
     
     st.info("길이 미끄럽습니다. 주의하세요.")
