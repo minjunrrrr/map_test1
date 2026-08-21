@@ -58,13 +58,27 @@ course_info = {
 }
 
 
+# 3. 사이드바 - 코스 선택 
+st.sidebar.header(" 👌코스 선택")
+
+# Excel 데이터 내에 존재하는 실제 코스 목록 추출
+unique_courses = list(df['코스'].unique()) if '코스' in df.columns else []
+course_options = ["전체 코스 보기"] + unique_courses
+
+selected_course = st.sidebar.selectbox("가고 싶은 코스를 선택하세요", course_options)
+
+# 선택한 코스에 맞게 데이터 필터링
+if selected_course == "전체 코스 보기":
+    filtered_df = df.copy()
+else:
+    filtered_df = df[df['코스'] == selected_course].copy()
+
 # 3. 지도 생성 및 마커 표시 (지도 시각화 단계)
 m = folium.Map(
     location=[37.40583317, 126.7214872],
     zoom_start=12
 )
 
-# 학교 위치 마커
 folium.Marker(
     location=[37.404160, 126.719249],
     popup="남동고등학교",
@@ -72,7 +86,7 @@ folium.Marker(
     icon=folium.Icon(color='lightblue', icon='info-sign')
 ).add_to(m)
 
-# 데이터프레임을 이용한 코스 마커
+
 for i in range(len(df)):
     folium.Marker(
         location=[df.iloc[i]['위도'], df.iloc[i]['경도']],
@@ -81,7 +95,7 @@ for i in range(len(df)):
         icon=folium.Icon(color='green', icon='info-sign')
     ).add_to(m)
         
-# 4. 화면 출력 (컬럼 나누기)
+# 4. 화면 출력
 col1, col2 = st.columns([3, 1])
 
 with col1:
